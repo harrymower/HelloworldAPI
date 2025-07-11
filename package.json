@@ -1,0 +1,18 @@
+{
+  "name": "helloworld-api",
+  "version": "1.0.0",
+  "description": "A simple demonstration API that returns a 'Hello World' message.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "api",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

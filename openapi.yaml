@@ -1,0 +1,79 @@
+# This is an OpenAPI 3.0.0 specification for a simple "Hello World" API.
+# It defines the API's structure, endpoints, and expected responses.
+# You can use this file with tools like Postman, Swagger UI, or various code generators
+# to interact with, visualize, or build clients for the API.
+
+openapi: 3.0.0
+
+# The info object provides metadata about the API.
+info:
+  title: "Hello World API"
+  description: "A simple demonstration API that returns a 'Hello World' message. This is often used as a basic example for API specifications."
+  version: "1.0.0"
+  contact:
+    name: "API Support"
+    url: "http://www.example.com/support"
+    email: "support@example.com"
+
+# The servers array specifies the API server and base URL.
+servers:
+  - url: "http://api.example.com/v1"
+    description: "Production Server"
+  - url: "http://localhost:3000/v1"
+    description: "Development Server"
+
+# The paths object defines the available endpoints (or paths) in the API.
+paths:
+  # This is the path for our "hello" endpoint.
+  /hello:
+    # This defines the HTTP method, which is GET in this case.
+    get:
+      summary: "Returns a Hello World message"
+      description: "This endpoint is a simple health check or introductory endpoint that returns a static JSON object with a greeting."
+      operationId: "getHelloWorld"
+      tags:
+        - "Greetings"
+      
+      # The responses object defines the possible responses for this operation.
+      responses:
+        # '200' is the HTTP status code for a successful response.
+        '200':
+          description: "A successful response containing the greeting."
+          # The content object describes the format and schema of the response body.
+          content:
+            application/json:
+              schema:
+                # The schema defines the structure of the JSON response.
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "The greeting message."
+                    example: "Hello World" # Example value for documentation.
+        
+        # '400' is the HTTP status code for a client error.
+        '400':
+          description: "Bad Request. The server could not understand the request due to invalid syntax."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: "A message describing the error."
+                    example: "Invalid request parameters."
+
+        # '500' is the HTTP status code for a server error.
+        '500':
+          description: "Internal Server Error. The server encountered an unexpected condition."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: "A message describing the server error."
+                    example: "An unexpected error occurred."
+
