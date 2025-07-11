@@ -53,8 +53,14 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server and listen for incoming requests.
-app.listen(port, () => {
-  console.log(`Hello World API server running on http://localhost:${port}`);
-  console.log(`Try the endpoint: http://localhost:${port}/v1/hello`);
-  console.log(`Try the new endpoint: http://localhost:${port}/v1/goodbye`);
-});
+// This block will only run when the file is executed directly (e.g., `node index.js`)
+// It will not run when the file is imported by another script, like our test file.
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Hello World API server running on http://localhost:${port}`);
+    console.log(`Try the endpoint: http://localhost:${port}/v1/hello`);
+    console.log(`Try the new endpoint: http://localhost:${port}/v1/goodbye`);
+  });
+}
+
+module.exports = app; // Export the app for testing
