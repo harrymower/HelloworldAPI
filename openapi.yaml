@@ -28,7 +28,7 @@ paths:
   /hello:
     # This defines the HTTP method, which is GET in this case.
     get:
-      summary: "Returns a Hello World message"
+     
       description: "This endpoint is a simple health check or introductory endpoint that returns a static JSON object with a greeting."
       operationId: "getHelloWorld"
       tags:
